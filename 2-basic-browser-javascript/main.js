@@ -79,6 +79,12 @@ class Game
         return "Total: " + this.score;
     }
 
+    static initialState()
+    {
+        const initialGame = new Game(0, 1, []); 
+        return JSON.stringify(initialGame);
+    }
+
     /**
      * This function takes a filepath, reads the contents of that file, parses it, and then returns a Game
      * @param {*} contents the contents of the cookie
@@ -149,7 +155,10 @@ function fixUp()
         $("#autoclickcostlabel").css("background-color", "gray");
     else
         $("#autoclickcostlabel").css("background-color", "white");
-    
+    if(JSON.stringify(game) === Game.initialState())
+        $("#resetbutton").css("background-color", "gray");
+    else
+        $("#resetbutton").css("background-color", "white");
     saveCookie();
 }
 
