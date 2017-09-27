@@ -4,24 +4,48 @@
     <meta charset="utf-8">
     <title>the holy grail</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
     <script src="./main.js"></script>
   </head>
   <body>
     <div class="app">
       <div class="header">
-        Total: 0
+          <div class="button" id="resetbutton">
+              Reset
+          </div>
+        <div id="total">
+          Total: 0
+        </div>
       </div>
       <div class="body">
-        <div class="left"></div>
-        <div class="center">
-          <div class="button">
-            +1
+        <div class="left">
+          <div class="button" id="multiplybutton">
+            *1.2
+          </div>
+          <div class="label" id="multiplylabel">
+              <p>MultiplierCost: 10</p>
           </div>
         </div>
-        <div class="right"></div>
+        <div class="center">
+          <div class="button" id="playbutton">
+            +1
+          </div>
+          
+        </div>
+        <div class="right">
+            <div class="button" id="autoclickbutton">
+                +1
+            </div>
+            <div class="label" id="autoclicklabel">
+                Total Added: 0
+            </div>
+            <div class="label" id="autoclickcostlabel">
+                <p>AutoClickerCost: 100</p>
+          </div>
+        </div>
       </div>
       <div class="footer">
-        Made w/ &lt;3 @ FastTrack'D
+        <p>Made w/ &lt;3 @ FastTrack'D</p>
       </div>
     </div>
   </body>
