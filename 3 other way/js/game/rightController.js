@@ -14,9 +14,14 @@ angular.module('gameApp').controller('rightController', ['$interval', 'gameServi
 
         const intervalID = $interval(()=>{
             gameService.game.score = gameService.game.score + (gameService.game.multiplier);
+            gameService.game.setCookie();
         }, 1000);
         gameService.game.subtract(gameService.game.autoClickerCost());
+        alert("intervalID: " + intervalID);
         gameService.game.intervals.push(intervalID);
+
+        gameService.game.setCookie();
+        //gameService.setCookie();
     }
     
     }])

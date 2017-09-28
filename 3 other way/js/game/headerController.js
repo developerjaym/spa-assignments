@@ -7,7 +7,7 @@ angular.module('gameApp').controller('headerController', ['gameService', functio
     
     */
     this.reset = ()=>{
-        gameService.game.reset();
+        gameService.reset();
     }
     
     }])

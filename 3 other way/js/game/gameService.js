@@ -6,6 +6,27 @@ class Game
         this.multiplier = multiplier;
         this.intervals = intervals;
     }
+
+    startIntervals($interval)
+    {
+        //**** FIGURE OUT WHY THESE ARENT STARTING***
+        
+        const l = this.intervals.length;
+        this.removeAllIntervals($interval);
+        alert("intervals removed");
+        for(let x = 0; x < l; x++)
+        {
+            alert('going through');    
+            const intervalID = $interval(()=>{this.add()}, 1000);
+            alert("intervalID: " + JSON.stringify(intervalID));
+            this.intervals.push(intervalID);
+        }
+        
+        alert("this.intervals " + this.intervals);
+        this.setCookie();
+        
+    }
+
     getScore()
     {
         return this.score;
@@ -24,16 +45,19 @@ class Game
         if(this.multiplier === 1)
             this.multiplier = 1.2;
         this.subtract(this.multiplyCost())
+        this.setCookie();
     }
 
     subtract(subtractor)
     {
         this.score = this.score - subtractor;
+        this.setCookie();
     }
 
     add()
     {
         this.score = this.score + (1*this.multiplier);
+        this.setCookie();
     }
 
     test()
@@ -56,19 +80,23 @@ class Game
         return this.intervals.length;
     }
 
-    removeAllIntervals()
+    removeAllIntervals($interval)
     {
         let length = this.intervals.length;
         for(let i = 0; i < length; i++)
         {
-            clearInterval(this.intervals[i]);
+            $interval.cancel(this.intervals[i]);
+            //clearInterval(this.intervals[i]['$$intevalId']);
+            
         }
         this.intervals = [];
+        this.setCookie();
     }
 
     addInterval(interval)
     {
         this.intervals.push(interval);
+        this.setCookie();
     }
 
     
@@ -83,11 +111,12 @@ class Game
         return "Total: " + this.score;
     }
 
-    reset()
+    reset($interval)
     {
-        this.removeAllIntervals();
+        this.removeAllIntervals($interval);
         this.score = 0;
         this.multiplier = 1;
+        this.setCookie();
     }
 
     static initialState()
@@ -95,9 +124,20 @@ class Game
         const initialGame = new Game(0, 1, []); 
         return JSON.stringify(initialGame);
     }
+    static testState()
+    {
+        const testGame = new Game(100, 1, []);
+        return JSON.stringify(testGame);
+    }
+
     getCookieString()
     {
         return JSON.stringify(this);
+    }
+
+    setCookie()
+    {
+        localStorage.setItem('game', this.getCookieString());
     }
     /**
      * This function takes a cookie, reads the contents of that cookie, parses it, and then returns a Game
@@ -110,16 +150,20 @@ class Game
     }
 }
 
-angular.module('gameApp').service('gameService', [ function () {
+angular.module('gameApp').service('gameService', ['$interval',  function ($interval) {
+    //localStorage.setItem('game', Game.testState());
     alert("test at beginnning : " + localStorage.getItem('game'));
     if(localStorage.getItem('game'))//we have a game
     {
         this.game = Game.parseFromCookie(localStorage.getItem('game'))//old game
-        localStorage.setItem('game', this.game.getCookieString());
+        alert("starting intervals")
+        //this.game.removeAllIntervals($interval);
+        this.game.startIntervals($interval);
+        //localStorage.setItem('game', this.game.getCookieString());
         
         //test code below
-        this.totalCookie = localStorage.getItem('game')
-        alert("total cookie: " + this.totalCookie);
+        //this.totalCookie = localStorage.getItem('game')
+        //alert("total cookie: " + this.totalCookie);
     }    
     else
     {
@@ -131,15 +175,20 @@ angular.module('gameApp').service('gameService', [ function () {
         alert("total cookie: " + this.totalCookie);
     }    
 
+    this.reset = ()=>
+    {
+        this.game.reset($interval);
+    }
 
+    /*
     this.setCookie = ()=>
     {
         localStorage.setItem('game', this.game.getCookieString());
        
         //test code below
         this.totalCookie = localStorage.getItem('game')
-        alert("total cookie: " + this.totalCookie);
+        //alert("total cookie: " + this.totalCookie);
     }
-   
+   */
 }])
 

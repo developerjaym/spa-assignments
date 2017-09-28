@@ -2,8 +2,7 @@
     <div class="label">
         Cost: {{$ctrl.service.game.multiplyCost()}}
     </div>
-    <button class="button" ng-click="$ctrl.test()" ng-model="$ctrl.multiplier">
-           <!-- ng-model="$ctrl.bloon.name" ng-click="$ctrl.showName()"-->
+    <button class="button" ng-click="$ctrl.setMultiplier()" >
            *{{$ctrl.service.game.getMultiplier()}}
     </button>
 </div>

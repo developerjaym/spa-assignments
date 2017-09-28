@@ -10,7 +10,7 @@ angular.module('gameApp').controller('centerController', ['gameService', functio
     this.add = ()=>{
         
         gameService.game.add();
-        gameService.setCookie();
+        //gameService.setCookie();
     }
     
     }])
