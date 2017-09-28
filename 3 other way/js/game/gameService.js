@@ -95,7 +95,7 @@ class Game
         const initialGame = new Game(0, 1, []); 
         return JSON.stringify(initialGame);
     }
-    getCookie()
+    getCookieString()
     {
         return JSON.stringify(this);
     }
@@ -110,9 +110,36 @@ class Game
     }
 }
 
-angular.module('gameApp').service('gameService', [function () {
-    //alert("test " + document.cookie);
-    this.game = new Game(0, 1, []);
-    //document.cookie = game.getCookie();
-    //alert("test 2 " + document.cookie);
+angular.module('gameApp').service('gameService', [ function () {
+    alert("test at beginnning : " + localStorage.getItem('game'));
+    if(localStorage.getItem('game'))//we have a game
+    {
+        this.game = Game.parseFromCookie(localStorage.getItem('game'))//old game
+        localStorage.setItem('game', this.game.getCookieString());
+        
+        //test code below
+        this.totalCookie = localStorage.getItem('game')
+        alert("total cookie: " + this.totalCookie);
+    }    
+    else
+    {
+        this.game = new Game(0, 1, []);//new game
+        localStorage.setItem('game', this.game.getCookieString());
+        
+        //test code below
+        this.totalCookie = localStorage.getItem('game')
+        alert("total cookie: " + this.totalCookie);
+    }    
+
+
+    this.setCookie = ()=>
+    {
+        localStorage.setItem('game', this.game.getCookieString());
+       
+        //test code below
+        this.totalCookie = localStorage.getItem('game')
+        alert("total cookie: " + this.totalCookie);
+    }
+   
 }])
+
