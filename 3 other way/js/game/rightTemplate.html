@@ -1,0 +1,11 @@
+<div>
+    <div class="label">
+        Count: {{$ctrl.service.game.getAutoClickerCount()}}
+    </div>
+    <div class="label">
+        Cost: {{$ctrl.service.game.autoClickerCost()}}
+    </div>
+    <button class="button" ng-click="$ctrl.addAutoClicker()">
+        +1
+    </button>
+</div>

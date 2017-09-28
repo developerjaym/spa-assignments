@@ -1,0 +1,86 @@
+body {
+    margin: 0 0 0 0;
+}
+
+div
+{
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    
+}
+.app
+{
+    flex-flow: column wrap;
+    height: 100vh;
+    width: 100vw;
+}
+.header
+{
+    background-color: pink;
+    height: 7vh;
+    font-size: large;
+    justify-content: center;
+    align-content: space-around;
+}
+.footer
+{
+    background-color: gray;
+    height: 7vh;
+    font-size: small;
+    justify-content: center;
+}
+.body
+{
+    height: 86vh;
+    width: 100vw;
+}
+.center
+{
+    width: 960px;
+    height: 86vh;
+    background-color: green;
+    align-content: center;
+    justify-content: center;
+    
+}
+.button
+{
+    border-color: transparent;
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    background-color: white;
+    font-size: medium; 
+    cursor: pointer;  
+
+    align-self: center;
+    justify-content: center;
+    align-items: center;    
+}
+.right
+{
+    background-color: blue;
+    height: 100%;
+    flex-grow: 1;
+
+    flex-direction: column-reverse;
+    justify-content: center;
+    
+}
+.left
+{
+    background-color: red;
+    height: 100%;
+    flex-grow: 1;
+
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+.label
+{
+    background-color: white;
+    height: 10%;
+    
+    text-align: center;
+    justify-content: center;
+}

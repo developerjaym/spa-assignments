@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>the holy grail</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/game/gameService.js"></script>
+    <script src="/js/game/leftController.js"></script>
+    <script src="/js/game/rightController.js"></script>
+    <script src="/js/game/centerController.js"></script>
+    <script src="/js/game/headerController.js"></script>
+    <script src="/js/game/leftComponent.js"></script>
+    <script src="/js/game/rightComponent.js"></script>
+    <script src="/js/game/centerComponent.js"></script>
+    <script src="/js/game/headerComponent.js"></script>
+  </head>
+  
+  <body ng-app="gameApp">
+    <div class="app">
+      <div class="header">
+          <header-component></header-component>
+      </div>
+      <div class="body">
+        <div class="left">
+            <left-component></left-component>
+        </div>
+        <div class="center">
+          <center-component></center-component>
+        </div>
+        <div class="right">
+            <right-component></right-component>
+        </div>
+        </div>  
+      <div class="footer">
+        <p>Made w/ &lt;3 @ FastTrack'D</p>
+      </div>
+    </div>
+  </body>
+</html>
