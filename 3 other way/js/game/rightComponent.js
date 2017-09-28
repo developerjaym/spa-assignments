@@ -7,11 +7,7 @@ angular.module('gameApp').component('rightComponent', {
     
         controller: 'rightController',
     
-        bindings: {
-    
-            //bloon: '='
-    
-        }
+        bindings: {}
     
     
     

@@ -1,8 +1,6 @@
-<div>
-    <div class="label">
+<div ng-style="{'background-color':$ctrl.service.game.getColor($ctrl.service.game.multiplyCost())}" class="label">
         Cost: {{$ctrl.service.game.multiplyCost()}}
     </div>
     <button class="button" ng-click="$ctrl.setMultiplier()" >
            *{{$ctrl.service.game.getMultiplier()}}
     </button>
-</div>

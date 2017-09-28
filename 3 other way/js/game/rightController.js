@@ -2,10 +2,6 @@ angular.module('gameApp').controller('rightController', ['$interval', 'gameServi
     
     this.autoClickerCost = gameService.game.autoClickerCost();
     this.service = gameService
-    /*
-    this.backgroundColor = { 'background-color': this.bloon.color };
-    
-    */
 
     this.addAutoClicker = () =>
     {
@@ -17,11 +13,9 @@ angular.module('gameApp').controller('rightController', ['$interval', 'gameServi
             gameService.game.setCookie();
         }, 1000);
         gameService.game.subtract(gameService.game.autoClickerCost());
-        alert("intervalID: " + intervalID);
         gameService.game.intervals.push(intervalID);
 
         gameService.game.setCookie();
-        //gameService.setCookie();
     }
     
     }])

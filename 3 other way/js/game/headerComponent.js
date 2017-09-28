@@ -7,11 +7,7 @@ angular.module('gameApp').component('headerComponent', {
     
         controller: 'headerController',
     
-        bindings: {
-    
-            //bloon: '='
-    
-        }
+        bindings: {}
     
     
     

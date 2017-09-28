@@ -8,9 +8,6 @@ angular.module('gameApp').component('centerComponent', {
         controller: 'centerController',
     
         bindings: {
-    
-            //bloon: '='
-    
         }
     
     

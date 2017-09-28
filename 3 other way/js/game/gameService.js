@@ -9,22 +9,14 @@ class Game
 
     startIntervals($interval)
     {
-        //**** FIGURE OUT WHY THESE ARENT STARTING***
-        
         const l = this.intervals.length;
         this.removeAllIntervals($interval);
-        alert("intervals removed");
         for(let x = 0; x < l; x++)
-        {
-            alert('going through');    
+        { 
             const intervalID = $interval(()=>{this.add()}, 1000);
-            alert("intervalID: " + JSON.stringify(intervalID));
             this.intervals.push(intervalID);
         }
-        
-        alert("this.intervals " + this.intervals);
         this.setCookie();
-        
     }
 
     getScore()
@@ -86,8 +78,6 @@ class Game
         for(let i = 0; i < length; i++)
         {
             $interval.cancel(this.intervals[i]);
-            //clearInterval(this.intervals[i]['$$intevalId']);
-            
         }
         this.intervals = [];
         this.setCookie();
@@ -98,8 +88,6 @@ class Game
         this.intervals.push(interval);
         this.setCookie();
     }
-
-    
 
     getIntervals()
     {
@@ -139,6 +127,15 @@ class Game
     {
         localStorage.setItem('game', this.getCookieString());
     }
+
+    getColor(condition)
+    {
+        let c = 'white'
+        if(this.score < condition)
+            c = 'gray'
+        return c;
+    }
+
     /**
      * This function takes a cookie, reads the contents of that cookie, parses it, and then returns a Game
      * @param {*} contents the contents of the cookie
@@ -151,44 +148,20 @@ class Game
 }
 
 angular.module('gameApp').service('gameService', ['$interval',  function ($interval) {
-    //localStorage.setItem('game', Game.testState());
-    alert("test at beginnning : " + localStorage.getItem('game'));
     if(localStorage.getItem('game'))//we have a game
     {
-        this.game = Game.parseFromCookie(localStorage.getItem('game'))//old game
-        alert("starting intervals")
-        //this.game.removeAllIntervals($interval);
+        this.game = Game.parseFromCookie(localStorage.getItem('game'))
         this.game.startIntervals($interval);
-        //localStorage.setItem('game', this.game.getCookieString());
-        
-        //test code below
-        //this.totalCookie = localStorage.getItem('game')
-        //alert("total cookie: " + this.totalCookie);
     }    
     else
     {
         this.game = new Game(0, 1, []);//new game
         localStorage.setItem('game', this.game.getCookieString());
-        
-        //test code below
-        this.totalCookie = localStorage.getItem('game')
-        alert("total cookie: " + this.totalCookie);
     }    
 
     this.reset = ()=>
     {
         this.game.reset($interval);
     }
-
-    /*
-    this.setCookie = ()=>
-    {
-        localStorage.setItem('game', this.game.getCookieString());
-       
-        //test code below
-        this.totalCookie = localStorage.getItem('game')
-        //alert("total cookie: " + this.totalCookie);
-    }
-   */
 }])
 

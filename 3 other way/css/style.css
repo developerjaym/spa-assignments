@@ -18,15 +18,18 @@ div
 {
     background-color: pink;
     height: 7vh;
-    font-size: large;
-    justify-content: center;
-    align-content: space-around;
+    font-size: xx-large;
+    flex-direction: column;
+    
+    align-content: center;
+    align-items: center;
+    
 }
 .footer
 {
     background-color: gray;
     height: 7vh;
-    font-size: small;
+    font-size: large;
     justify-content: center;
 }
 .body
@@ -41,6 +44,7 @@ div
     background-color: green;
     align-content: center;
     justify-content: center;
+    align-items: center;
     
 }
 .button
@@ -50,7 +54,7 @@ div
     height: 150px;
     border-radius: 150px;
     background-color: white;
-    font-size: medium; 
+    font-size: x-large; 
     cursor: pointer;  
 
     align-self: center;
@@ -65,7 +69,7 @@ div
 
     flex-direction: column-reverse;
     justify-content: center;
-    
+    align-items: center;
 }
 .left
 {
@@ -75,12 +79,14 @@ div
 
     flex-direction: column-reverse;
     justify-content: center;
+    align-items: center;
 }
 .label
 {
     background-color: white;
     height: 10%;
-    
+    font-size: x-large;
+
     text-align: center;
     justify-content: center;
 }
